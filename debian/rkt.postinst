@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    configure)
+        if ! getent group rkt >>/dev/null 2>&1 ; then
+            addgroup --quiet --system rkt
+        fi
+        if ! getent group rkt-admin >>/dev/null 2>&1 ; then
+            addgroup --quiet --system rkt-admin
+        fi
+        ## Prepare rkt data directories in "/var/lib/rkt":
+        /usr/lib/rkt/setup-data-dir.sh  2>>/dev/null
+    ;;
+esac
+
+#DEBHELPER#

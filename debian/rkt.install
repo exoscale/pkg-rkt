@@ -1,0 +1,6 @@
+build-rkt-*/bin/rkt usr/bin/
+build-rkt-*/bin/*.aci  /usr/lib/rkt/
+
+debian/etc/*      /etc/
+
+dist/scripts/setup-data-dir.sh    /usr/lib/rkt/

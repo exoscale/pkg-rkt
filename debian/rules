@@ -1,0 +1,32 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+PKD   = $(abspath $(dir $(MAKEFILE_LIST)))
+PKG   = $(word 2,$(shell dpkg-parsechangelog -l$(PKD)/changelog | grep ^Source))
+PKV  ?= $(shell dpkg-parsechangelog -l$(PKD)/changelog -SVersion)
+
+%:
+	dh $@ --builddirectory=_build
+
+override_dh_auto_configure:
+
+override_dh_auto_build:
+	## Build Stage1 .aci image
+	sh ./autogen.sh
+	./configure \
+		--enable-tpm=no \
+		--with-stage1-flavors=host \
+		--with-stage1-default-name=host \
+		--with-stage1-default-version=$(PKV) \
+		--with-stage1-default-location=/usr/lib/rkt/stage1-host.aci
+	$(MAKE) manpages
+	$(MAKE)
+
+override_dh_auto_test:
+	-dh_auto_test
+
+override_dh_install:
+	dh_install -XLICENSE.MIT
+	install -D dist/init/systemd/tmpfiles.d/rkt.conf debian/rkt/usr/lib/tmpfiles.d/rkt.conf

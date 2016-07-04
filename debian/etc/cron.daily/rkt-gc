@@ -1,0 +1,7 @@
+#!/bin/sh
+
+[ -x "/usr/bin/rkt" ] || exit 0
+
+## Garbage Collection for rkt
+/usr/bin/rkt gc --grace-period=24h
+#/usr/bin/rkt image gc --grace-period=24h
