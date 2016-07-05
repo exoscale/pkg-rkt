@@ -1,3 +1,10 @@
+rkt (1.9.1-1~xenial0+exo2) xenial; urgency=medium
+
+  * To get systemd-users, ensure we have a recent enough version of
+    systemd.
+
+ -- Vincent Bernat <bernat@debian.org>  Tue, 05 Jul 2016 09:09:52 +0200
+
 rkt (1.9.1-1~xenial0+exo1) xenial; urgency=medium
 
   * Loosely based on the Debian package.

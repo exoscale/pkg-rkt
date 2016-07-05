@@ -17,7 +17,7 @@ Package: rkt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
     ,adduser
-    ,systemd (>= 230-3~)
+    ,systemd (>= 229-4ubuntu4+exo1)
     ,systemd-container (>= 228)
     ,dbus
 Suggests: docker2aci
