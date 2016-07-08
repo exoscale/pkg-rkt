@@ -1,3 +1,10 @@
+rkt (1.9.1-1~xenial0+exo3) xenial; urgency=medium
+
+  * Require systemd-sysusers (which is a virtual package) or a recent
+    enough version of systemd.
+
+ -- Vincent Bernat <bernat@debian.org>  Fri, 08 Jul 2016 15:15:41 +0200
+
 rkt (1.9.1-1~xenial0+exo2) xenial; urgency=medium
 
   * To get systemd-users, ensure we have a recent enough version of

@@ -17,8 +17,9 @@ Package: rkt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
     ,adduser
-    ,systemd (>= 229-4ubuntu4+exo1)
+    ,systemd (>= 228)
     ,systemd-container (>= 228)
+    ,systemd-sysusers | systemd (>= 230-3~),
     ,dbus
 Suggests: docker2aci
 Description: CLI for running App Containers
